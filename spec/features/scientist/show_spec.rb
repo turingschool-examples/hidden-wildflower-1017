@@ -15,7 +15,7 @@ RSpec.describe "scientists show page" do
 
     @scientist_experiment_1 = ScientistExperiment.create!(scientist: @scientist_1, experiment: @experiment_1)
     @scientist_experiment_2 = ScientistExperiment.create!(scientist: @scientist_1, experiment: @experiment_2)
-    @scientist_experiment_3 = ScientistExperiment.create!(scientist: @scientist_2, experiment: @experiment_2)
+    @scientist_experiment_3 = ScientistExperiment.create!(scientist: @scientist_2, experiment: @experiment_1)
     @scientist_experiment_4 = ScientistExperiment.create!(scientist: @scientist_2, experiment: @experiment_3)
     @scientist_experiment_5 = ScientistExperiment.create!(scientist: @scientist_3, experiment: @experiment_3)
 
@@ -38,7 +38,6 @@ RSpec.describe "scientists show page" do
       expect(page).to have_content(@lab_1.name)
       expect(page).to have_content(@experiment_1.name)
       expect(page).to have_content(@experiment_2.name)
-      save_and_open_page
       expect(page).to_not have_content(@scientist_2.name)
       expect(page).to_not have_content(@experiment_3.name)
       expect(page).to_not have_content(@lab_2.name)
@@ -54,9 +53,9 @@ RSpec.describe "scientists show page" do
     # Then I see that the experiment is still on the other scientist's work load
     it "next to each experiment's name, I see a button to remove that experiment" do
       visit "/scientists/#{@scientist_1.id}"
-      #expect(page).to have_content(@scientist_1.name)
-      expect(page).to have_content(@experiment_1.name)
+      expect(page).to have_content(@scientist_1.name)
       expect(page).to have_content(@experiment_2.name)
+      expect(page).to have_content(@experiment_1.name)
       
       within("#exp-#{@experiment_2.id}") do
         expect(page).to have_button("Remove")
