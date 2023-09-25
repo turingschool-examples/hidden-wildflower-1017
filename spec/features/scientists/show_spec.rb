@@ -19,8 +19,7 @@ RSpec.describe "scientist show page" do
 
   it "shows the scientists information and the experiments that they are running" do 
     visit scientist_path(@sci_1)
-    save_and_open_page
-    
+
     within "#details" do 
       expect(page).to have_content("Name: #{@sci_1.name}")
       expect(page).to have_content("Specialty: #{@sci_1.specialty}")
@@ -34,6 +33,26 @@ RSpec.describe "scientist show page" do
     within "#current_experiments" do 
       expect(page).to have_content("Name: MINERvA")
       expect(page).to have_content("Name: Freedom 7")
+    end
+  end
+
+  it "has a remove button to remove an experiment from that specific scientists work load" do 
+    visit scientist_path(@sci_1)
+
+    within "#experiment-#{@exp_1.id}" do 
+      expect(page).to have_button("Remove #{@exp_1.name}")
+      click_button "Remove #{@exp_1.name}"
+    end
+    expect(current_path).to eq(scientist_path(@sci_1))
+
+    within "#current_experiments" do 
+      expect(page).to_not have_content("MINERvA")
+    end
+
+    visit scientist_path(@sci_2)
+
+    within "#current_experiments" do 
+      expect(page).to have_content("MINERvA")
     end
   end
 end
