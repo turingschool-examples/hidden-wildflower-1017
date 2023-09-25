@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :experiments, only: [:destroy], :controller => 'scientist_experiments'
 
   end
+
+  resources :experiments, only: [:index]
 end
