@@ -34,9 +34,10 @@ RSpec.describe 'Experiments index page' do
     it "displays the names of all long running experiments(longer than 6 months) in descending order of duration" do
       visit experiments_path
 
+      expect(page).to have_content("Experiments Older than 6 months")
       expect(page).to_not have_content(@experiment_1.name)
       expect(page).to_not have_content(@experiment_2.name)
-      
+
       expect(page).to have_content(@experiment_3.name)
       expect(page).to have_content(@experiment_4.name)
       expect(page).to have_content(@experiment_5.name)
