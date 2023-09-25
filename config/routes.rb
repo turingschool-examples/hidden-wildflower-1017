@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   resources :experiments, only: [:index]
+
+  resources :labs, only: [:show]
 end
