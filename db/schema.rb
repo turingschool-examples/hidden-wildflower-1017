@@ -30,10 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_152259) do
 
   create_table "science_experiements", force: :cascade do |t|
     t.bigint "scientist_id", null: false
-    t.bigint "experiements_id", null: false
+    t.bigint "experiement_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["experiements_id"], name: "index_science_experiements_on_experiements_id"
+    t.index ["experiement_id"], name: "index_science_experiements_on_experiement_id"
     t.index ["scientist_id"], name: "index_science_experiements_on_scientist_id"
   end
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_152259) do
     t.index ["lab_id"], name: "index_scientists_on_lab_id"
   end
 
-  add_foreign_key "science_experiements", "experiements", column: "experiements_id"
+  add_foreign_key "science_experiements", "experiements"
   add_foreign_key "science_experiements", "scientists"
   add_foreign_key "scientists", "labs"
 end

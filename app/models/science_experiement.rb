@@ -1,3 +1,4 @@
 class ScienceExperiement < ApplicationRecord
-  has_many :scientists, :experiements 
+  belongs_to :scientist
+  belongs_to :experiement 
 end
