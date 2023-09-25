@@ -6,4 +6,5 @@
 <p id='experiments_names'> Experiments: </p>
 <% @scientist.experiments.each do |experiment| %>
   <li><%= "#{experiment.name}" %></p>
+  <%= link_to "Remove #{experiment.name}?", "/scientist_experiments/#{@scientist.id}?exp_id=#{experiment.id}", method: :delete %>
 <% end %>
