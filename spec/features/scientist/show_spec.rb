@@ -38,7 +38,7 @@ RSpec.describe "scientists show page" do
       expect(page).to have_content(@lab_1.name)
       expect(page).to have_content(@experiment_1.name)
       expect(page).to have_content(@experiment_2.name)
-      
+      save_and_open_page
       expect(page).to_not have_content(@scientist_2.name)
       expect(page).to_not have_content(@experiment_3.name)
       expect(page).to_not have_content(@lab_2.name)
