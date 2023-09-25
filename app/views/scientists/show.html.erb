@@ -1,0 +1,9 @@
+<h1> Scientist Show Page </h1>
+<li> Name: <%= @scientist.name %></li>
+<li> Specialty: <%= @scientist.specialty%></li>
+<li> University: <%= @scientist.university%></li>
+<li> Lab: <%= @scientist.lab.name%></li>
+<% @scientist.experiements.each do |experiement|%>
+    <li> Experiements:<%= experiement.name%>
+    <%= button_to "Remove #{experiement.name}", "/scientists/#{@scientist.id}" %></li>
+                    <% end %>
