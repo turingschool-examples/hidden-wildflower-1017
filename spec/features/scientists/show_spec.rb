@@ -14,6 +14,7 @@ RSpec.describe "scientists show page" do
     @john_experiment_1 = @scientist_1.scientist_experiments.create!(scientist_id: @scientist_1.id, experiment_id: @experiment_1.id)
     @john_experiment_2 = @scientist_1.scientist_experiments.create!(scientist_id: @scientist_1.id, experiment_id: @experiment_2.id)
     @alex_experiment_1 = @scientist_2.scientist_experiments.create!(scientist_id: @scientist_2.id, experiment_id: @experiment_3.id)
+    @alex_experiment_2 = @scientist_2.scientist_experiments.create!(scientist_id: @scientist_2.id, experiment_id: @experiment_1.id)
 
   end
 
@@ -36,7 +37,31 @@ RSpec.describe "scientists show page" do
       expect(page).to have_content(@experiment_1.name)
       expect(page).to have_content(@experiment_2.name)
       expect(page).to_not have_content(@experiment_3.name)
-      save_and_open_page
+      # save_and_open_page
+    end
+
+    it "Then next to each experiment's name, I see a button to remove that experiment from that scientist's work load" do
+      visit "/scientists/#{@scientist_1.id}"
+
+      within("#Divergence") do
+        expect(page).to have_content(@experiment_1.name)
+        expect(page).to have_button("Remove experiment")
+      end
+        
+      within("#Universe") do
+        expect(page).to have_content(@experiment_2.name)
+        expect(page).to have_button("Remove experiment")
+      end
+    end
+
+    it "When I click that button for one experiment, I'm brought back to the scientist's show page" do
+      visit "/scientists/#{@scientist_1.id}"
+      
+      within("#Divergence") do
+        click_button "Remove experiment"
+        expect(page).to_not have_content(@experiment_1.name)
+        expect(current_path).to eq("/scientists/#{@scientist_1.id}")
+      end
     end
   end
 end
