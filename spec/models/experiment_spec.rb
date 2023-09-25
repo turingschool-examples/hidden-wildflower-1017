@@ -7,7 +7,7 @@ RSpec.describe Experiment, type: :model do
   end
 
   describe 'class methods' do
-    it "#sort_by_num_months_longer_than_6" do
+    it "#sort_by_num_months_longer_than_six" do
       @lab_1 = Lab.create!(name: "Frankenstein's Lab")
       @lab_2 = Lab.create!(name: "Dr. Jekyll's Lab")
       @lab_3 = Lab.create!(name: "Einstein's Lab")
