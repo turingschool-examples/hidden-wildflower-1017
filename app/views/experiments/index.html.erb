@@ -1,0 +1,5 @@
+<h1> All Experiments </h1>
+
+<% Experiment.longer_than(6).each do |experiment| %>
+ <%= experiment.name %>
+<% end %>

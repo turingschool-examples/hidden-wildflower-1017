@@ -1,9 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Experiment do
-  it { should have_many :experiment_scientists }
-  it { should have_many(:scientists).through(:experiment_scientists)}
-
+RSpec.describe "Scientist Show page" do
   before(:each) do
     @radcliffe = Lab.create!(name: "Radcliffe College")
     @other = Lab.create!(name: "Other")
@@ -12,10 +9,10 @@ RSpec.describe Experiment do
     @russell = Scientist.create(name: "Russell", specialty: "Plagarism", university: "other", lab: @other)
 
     @composition = Experiment.create(name: "Composition", objective: "what a star is made of", num_months: 3)
-    @credit = Experiment.create(name: "Payne's paper", objective: "stealing", num_months: 7)
     @break = Experiment.create(name: "Break Glass Ceiling", objective: "be awesome", num_months: 24)
     @stars = Experiment.create(name: "Stars", objective: "more star stuff", num_months: 6)
-    @space = Experiment.create(name: "Stars", objective: "more star stuff", num_months: 9)
+    @space = Experiment.create(name: "Space", objective: "everything", num_months: 9)
+    @credit = Experiment.create(name: "Payne's paper", objective: "stealing", num_months: 7)
   
     ExperimentScientist.create(scientist: @payne, experiment: @composition)
     ExperimentScientist.create(scientist: @payne, experiment: @break)
@@ -24,8 +21,22 @@ RSpec.describe Experiment do
     ExperimentScientist.create(scientist: @russell, experiment: @credit)
   end
 
+  it "shows only experiments lasting more than 6 months" do
+    visit experiments_path
 
-  it "can order from longest to shortest experiments over 6 months " do
-    expect(Experiment.longer_than(6)).to eq([@break, @space, @credit])
+    expect(page).to have_content(@break.name)
+    expect(page).to have_content(@space.name)
+    expect(page).to have_content(@credit.name)
+
+    expect(page).to_not have_content(@composition.name)
+    expect(page).to_not have_content(@stars.name)
+  end
+
+  it "shown experiments are is order by number of months longest to shortest" do
+    visit experiments_path
+
+    expect(@break.name).to appear_before(@space.name)
+    expect(@space.name).to appear_before(@credit.name)
   end
 end
+

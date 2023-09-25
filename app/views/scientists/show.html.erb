@@ -7,7 +7,7 @@
 
   <%= form_with url: "/experiments/#{experiment.id}/", method: :delete, data: { turbo: false} do |f| %>
     <%= f.hidden_field :scientist_id, :value=>"#{@scientist.id}" %>
-      <%= f.submit "Delete #{experiment.name}" %>
+    <%= f.submit "Delete #{experiment.name}" %>
   <% end %>
 
   <% end %>
