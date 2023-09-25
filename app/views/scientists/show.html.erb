@@ -1,0 +1,15 @@
+<h3><%= @scientist.name %></h3>
+<br>
+<p>Specialty: <%= @scientist.specialty %></p>
+<p>University: <%= @scientist.university %></p>
+<p>Laboratory: <%= @scientist.lab_name %></p>
+<h4>Experiments:</h4>
+<dl>
+<% @scientist.experiments.each do |experiment| %>
+  <section id="experiment-<%= experiment.id %>">
+    <dt><strong><%= experiment.name %></strong></dt>
+      <dd>Objective: <%= experiment.objective %></dd>
+      <dd>Months Ongoing: <%= experiment.num_months %></dd>
+  </section><br>
+<% end %>
+</dl>
