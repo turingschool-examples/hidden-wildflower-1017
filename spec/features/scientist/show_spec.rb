@@ -32,6 +32,15 @@ RSpec.describe "Scientist" do
 
     expect(page).to have_button("Remove #{@ollie.name}")
     expect(page).to have_button("Remove #{@pepper.name}")
+
+    click_button("Remove #{@pepper.name}")
+    expect(page).to have_current_path("/scientists/#{@hill.id}")
+
+    expect(page).to have_content(@ollie.name)
+    expect(page).to have_button("Remove #{@ollie.name}")
+
+    expect(page).to_not have_content(@pepper.name)
+    expect(page).to_not have_button("Remove #{@pepper.name}")
   end
 end
 # save_and_open_page
