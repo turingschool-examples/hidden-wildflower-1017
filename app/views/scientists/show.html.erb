@@ -1,10 +1,13 @@
 <h1><%= @scientist.name %> Show Page</h1>
 
-<li><%= @scientist.name %></li>
-<li><%= @scientist.specialty %></li>
-<li><%= @scientist.university %></li>
-<li><%= @scientist.lab.name %></li>
+<p>Specialty: <%= @scientist.specialty %></p>
+<p>University: <%= @scientist.university %></p>
+<p>Lab: <%= @scientist.lab.name %></p>
 
+<h2>Experiments</h2>
 <% @scientist.experiments.each do |experiment| %>
-  <p><%= experiment.name%></p>
-<% end%>
+  <li>
+    <%= experiment.name %>
+    <%= button_to "Remove #{experiment.name}", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete %>
+  </li>
+<% end %>

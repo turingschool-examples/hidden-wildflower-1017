@@ -29,4 +29,16 @@ RSpec.describe 'When a user visits a scientist show page', type: :feature do
     expect(page).to have_content("#{@experiment_1.name}")
     expect(page).to have_content("#{@experiment_2.name}")
   end
+
+  # US 2
+  it "displays a button to remove that experiment" do
+    visit "/scientists/#{@scientist_1.id}"
+
+    expect(page).to have_content("#{@experiment_1.name}")
+
+    click_button("Remove #{@experiment_1.name}")
+
+    expect(page).to_not have_content("#{@experiment_1.name}")
+    expect(current_path).to eq("/scientists/#{@scientist_1.id}")
+  end
 end
