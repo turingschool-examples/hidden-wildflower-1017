@@ -1,0 +1,14 @@
+<h2><%= @lab.name %></h2>
+<div id="scientists">
+  <h4>Scientists:</h4>
+  <ul>
+    <% @lab.scientists_by_experiments.each do |scientist| %>
+      <div id="scientist-<%= scientist.id %>">
+        <li>
+          <p><strong><%= scientist.name %></strong><p>
+          <p>Number of Experiments: <%= scientist.experiments.count %>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+</div>

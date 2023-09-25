@@ -8,7 +8,6 @@ def load_test_data
 
   @minerva = Experiment.create!(name: "MINERvA", objective: "study neutrino reactions with five different nuclei", num_months: 4)
     @minerva_curie = @minerva.scientist_experiments.create!(scientist_id: @curie.id, experiment_id: @minerva.id)
-    @minerva_feynman = @minerva.scientist_experiments.create!(scientist_id: @feynman.id, experiment_id: @minerva.id)
   
   @manhattan = Experiment.create!(name: "Manhattan Project", objective: "use little thing to make big explosion", num_months: 36)
     @manhattan_curie = @manhattan.scientist_experiments.create!(scientist_id: @curie.id, experiment_id: @manhattan.id)
