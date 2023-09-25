@@ -18,34 +18,32 @@ RSpec.describe "scientists show page" do
 
   end
 
-  describe "When I visit a scientist's show page" do
-    it "I see all of that scientist's information including: name, specialty, university where they got their degree" do
 
+  describe "as a visitor" do
+    it "next to each experiment's name, I see a button to remove that experiment from that scientist's work load" do
       visit "/scientists/#{@scientist_1.id}"
 
-      expect(page).to have_content(@scientist_1.name)
-      expect(page).to have_content(@scientist_1.specialty)
-      expect(page).to have_content(@scientist_1.university)
+      within("#Divergence") do
+        expect(page).to have_content(@experiment_1.name)
+        expect(page).to have_button("Remove experiment")
+      end
+        
+      within("#Universe") do
+        expect(page).to have_content(@experiment_2.name)
+        expect(page).to have_button("Remove experiment")
+      end
     end
 
-    it "And I see the name of the lab where this scientist works
-    And I see the names of all of the experiments this scientist is running" do
+    it "When I click that button for one experiment, I'm brought back to the scientist's show page" do
       visit "/scientists/#{@scientist_1.id}"
+      
+      within("#Divergence") do
+        click_button "Remove experiment"
+        expect(current_path).to eq("/scientists/#{@scientist_1.id}")
+      end
 
-      expect(page).to have_content(@scientist_1.name)
-      expect(page).to have_content(@lab_1.name)
-      expect(page).to have_content(@experiment_1.name)
+      expect(page).to_not have_content(@experiment_1.name)
       expect(page).to have_content(@experiment_2.name)
-      expect(page).to_not have_content(@experiment_3.name)
-      # save_and_open_page
-    end
-
-    it "And when I visit a different scientist's show page that is working on that same experiment,
-    Then I see that the experiment is still on the other scientist's work load" do
-      visit "/scientists/#{@scientist_2.id}"
-
-      expect(page).to have_content(@experiment_1.name)
-      expect(page).to have_content(@experiment_3.name)
     end
   end
 end

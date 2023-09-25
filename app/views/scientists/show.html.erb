@@ -7,6 +7,6 @@
   <% @scientist.experiments.each do |experiment| %>
     <div class="experiment-name" id="<%=experiment.name %>">
       <p><%= experiment.name %></p>
-      <%= button_to "Remove experiment", "/scientists/#{experiment.id}", method: :delete %>
+      <%= button_to "Remove experiment", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete %>
     </div>
   <% end %>
