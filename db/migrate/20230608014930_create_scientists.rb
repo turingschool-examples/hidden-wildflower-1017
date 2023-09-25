@@ -4,6 +4,7 @@ class CreateScientists < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :specialty
       t.string :university
+      
       t.references :lab, null: false, foreign_key: true
 
       t.timestamps
