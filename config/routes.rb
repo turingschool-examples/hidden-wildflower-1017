@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "/scientists/:id", to: "scientists#show"
-  patch "/scientists/:id", to: "scientists#update"
+  patch "/scientists/:id/update/:experiment_id", to: "scientists#update"
 end

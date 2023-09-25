@@ -5,14 +5,10 @@ class ScientistsController < ApplicationController
 
   def update
     @scientist = Scientist.find(params[:id])
-    @experiment = Experiment.find(params[:experiment_id])
+    experiment = Experiment.find(params[:experiment_id])
 
-    if @scientist.experiments.delete(@experiment)
+    if @scientist.experiments.delete(experiment)
       redirect_to "/scientists/#{@scientist.id}"
     end
-
-
   end
-
-
 end

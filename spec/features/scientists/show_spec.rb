@@ -40,6 +40,7 @@ RSpec.describe "scientist#show" do
       visit "/scientists/#{@scientist_1.id}"
 
       within("#remove_experiment-#{@experiment_1.id}") do
+     
         expect(page).to have_button("Remove Experiment")
         click_button("Remove Experiment")
       end
@@ -47,6 +48,10 @@ RSpec.describe "scientist#show" do
       expect(current_path).to eq("/scientists/#{@scientist_1.id}")
 
       expect(page).to_not have_content(@experiment_1.name)
+
+      visit "/scientists/#{@scientist_2.id}"
+
+      expect(page).to have_content(@experiment_1.name)
     end
   end 
 end

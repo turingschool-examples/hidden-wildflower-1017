@@ -8,10 +8,10 @@
     <h3>Experiments currently working on:</h3>
   <ul>
       <% @scientists.experiments.each do |experiment| %>
-       <li id="remove_experiment-<%= experiment.id%>">
+        <li id="remove_experiment-<%= experiment.id%>">
           <%= experiment.name %>
-          <%= button_to "Remove Experiment", "/scientists/#{@scientists.id}", method: :patch %>
+          <%= button_to "Remove Experiment", "/scientists/#{@scientists.id}/update/#{experiment.id}", method: :patch %>
       <% end %>
-      </li>
+        </li>
   </ul>
 
