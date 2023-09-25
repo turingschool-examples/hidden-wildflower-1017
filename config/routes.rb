@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :scientists, only: [:show]
+  resources :scientist_experiments, only: [:destroy]
 
 end

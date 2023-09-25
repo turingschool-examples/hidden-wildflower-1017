@@ -7,7 +7,7 @@
 <dl>
 <% @scientist.experiments.each do |experiment| %>
   <section id="experiment-<%= experiment.id %>">
-    <dt><strong><%= experiment.name %></strong></dt>
+    <dt><strong><%= experiment.name %></strong>&emsp;<%= button_to "Remove from Workload", scientist_experiment_path(experiment.scientist_experiment(@scientist)), method: :delete, params: {scientist_id: @scientist.id}, data: {turbo: false} %></dt>
       <dd>Objective: <%= experiment.objective %></dd>
       <dd>Months Ongoing: <%= experiment.num_months %></dd>
   </section><br>
