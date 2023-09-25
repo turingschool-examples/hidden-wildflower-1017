@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+15.times do
+  ScientistsExperiment.create(
+    scientist_id: Scientist.all.sample.id,
+    experiment_id: Experiment.all.sample.id
+  )
+
+end
