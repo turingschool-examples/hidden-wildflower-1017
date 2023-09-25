@@ -1,0 +1,6 @@
+<h1><%= @lab.name %></h1>
+
+<p> Scientists under lab and number of experiments: </p>
+<% @lab.scientist_with_experiment_count.each do |scientist| %>
+  <li><%= "#{scientist.name} has #{scientist.count} experiments" %></p>
+<% end %>

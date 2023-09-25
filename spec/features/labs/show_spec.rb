@@ -1,9 +1,6 @@
-require 'rails_helper'
+require "rails_helper" 
 
-RSpec.describe Lab do
-  it {should have_many :scientists}
-  it {should have_many(:experiments).through(:scientists)}
-
+RSpec.describe "Labs Show Page" do 
   before(:each) do 
     @lab1 = Lab.create!(name: "Bob's lab")
     @scientist1 = @lab1.scientists.create!(name:"Bob", specialty:"Makin stuff", university:"Oxford")
@@ -20,7 +17,13 @@ RSpec.describe Lab do
     @scientist_experiment6 = ScientistExperiment.create!(scientist:@scientist3, experiment:@experiment3)
   end
 
-  it "#scientist_with_experiment_count" do
-    expect(@lab1.scientist_with_experiment_count).to eq([@scientist3, @scientist2, @scientist1])
+  it "Visit lab show page with details" do
+    visit "labs/#{@lab1.id}"
+
+    expect(page).to have_content(@lab1.name)
+    expect(page).to have_content("#{@scientist1.name} has 1 experiments")
+    expect(page).to have_content("#{@scientist2.name} has 2 experiments")
+    expect(page).to have_content("#{@scientist3.name} has 3 experiments")
+
   end
 end
