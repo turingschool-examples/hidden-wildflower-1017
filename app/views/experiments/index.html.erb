@@ -1,0 +1,9 @@
+<h1> Experiments which have ran longer than 6 months </h1>
+
+<section id="Experiments">
+<% @experiments.each do |experiment| %>
+    <p>Experiment: <%= experiment.name %> </p>
+    <p>Has been running for <%= experiment.num_months %> Months </p>
+    <br>
+    <% end %>
+</section>
