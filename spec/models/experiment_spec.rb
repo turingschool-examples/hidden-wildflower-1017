@@ -34,7 +34,7 @@ RSpec.describe Experiment, type: :model do
       @scientist_experiment_7 = ScientistExperiment.create!(scientist_id: @scientist_5.id, experiment_id: @experiment_5.id)
       @scientist_experiment_8 = ScientistExperiment.create!(scientist_id: @scientist_5.id, experiment_id: @experiment_6.id)
 
-      expect(Experiment.sort_by_num_months).to eq([@experiment_6, @experiment_5, @experiment_4, @experiment_3])
+      expect(Experiment.sort_by_num_months_longer_than_six).to eq([@experiment_6, @experiment_5, @experiment_4, @experiment_3])
     end 
   end
 end

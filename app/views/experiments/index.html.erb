@@ -1,0 +1,16 @@
+<h1>Experiments Older than 6 months</h1>  
+
+<table>
+  <thead>
+    <tr>Experiment Name</tr>
+    <tr>Experiment Duration</tr>
+  </thead>
+  <tbody>
+    <% @experiments.each do |experiment| %>
+      <tr>
+        <td><%= experiment.name %></td>
+        <td><%= experiment.num_months %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
