@@ -23,7 +23,14 @@ RSpec.describe "Scientist Show Page" do
       
     end
 
-    it "I see a button to remove " do
+#     Then next to each experiment's name, I see a button to remove that experiment from that scientist's work load
+# When I click that button for one experiment
+# I'm brought back to the scientist's show page
+# And I no longer see that experiment's name listed
+# And when I visit a different scientist's show page that is working on that same experiment,
+# Then I see that the experiment is still on the other scientist's work load
+
+    it "I see a button to remove experiment" do
       visit scientist_path(@scientist_1)
 
       expect(page).to have_content(@scientist_1.name)
