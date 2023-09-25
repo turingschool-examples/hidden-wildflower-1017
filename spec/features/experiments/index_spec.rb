@@ -1,6 +1,6 @@
 require "rails_helper" 
 
-RSpec.describe "Scientists Show Page" do 
+RSpec.describe "Experiments index Page" do 
   before(:each) do 
     @lab1 = Lab.create!(name: "Bob's lab")
     @scientist1 = @lab1.scientists.create!(name:"Bob", specialty:"Makin stuff", university:"Oxford")
@@ -15,26 +15,14 @@ RSpec.describe "Scientists Show Page" do
     @scientist_experiment5 = ScientistExperiment.create!(scientist:@scientist2, experiment:@experiment2)
     @scientist_experiment6 = ScientistExperiment.create!(scientist:@scientist2, experiment:@experiment3)
   end
-  it "scientist show page" do
-    visit "/scientists/#{@scientist1.id}"
 
-    expect(page).to have_content(@scientist1.name)
-    expect(page).to have_content(@scientist1.specialty)
-    expect(page).to have_content(@scientist1.university)
-    expect(page).to have_content(@lab1.name)
+  it "visit experiments index page and show names decending by month with 6 months or longer duration" do
+    visit "/experiments"
+
     expect(page).to have_content(@experiment1.name)
-    expect(page).to have_content(@experiment2.name)
+    expect(page).not_to have_content(@experiment2.name)
     expect(page).to have_content(@experiment3.name)
-  end
 
-  it "remove experiment from scientist" do
-    visit "/scientists/#{@scientist1.id}"
-    expect(page).to have_content(@experiment1.name)
-
-    click_link("Remove #{@experiment1.name}?")
-    expect(page).not_to have_content(@experiment1.name)
-
-    visit "/scientists/#{@scientist2.id}"
-    expect(page).to have_content(@experiment1.name)
+    expect(@experiment3.name).to appear_before(@experiment1.name)
   end
 end

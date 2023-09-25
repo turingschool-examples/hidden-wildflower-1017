@@ -1,0 +1,4 @@
+<p id='experiments_names'> Long term experiments: </p>
+<% Experiment.long_term.each do |experiment| %>
+  <li><%= "#{experiment.name}" %></p>
+<% end %>
