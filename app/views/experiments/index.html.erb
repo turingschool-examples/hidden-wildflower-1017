@@ -1,0 +1,13 @@
+<h2>Experiments Index</h2>
+<div id="long_experiments">
+  <h4>Long Experiments:</h4>
+  <ul>
+    <% @experiments.where("num_months > 6").order(num_months: :desc).each do |experiment| %>
+      <div id="experiment-<%= experiment.id %>">
+        <li>
+          <p><%= experiment.name %></p>
+        </li>
+      </div>
+    <% end %>
+  </ul>
+</div>
