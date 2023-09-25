@@ -10,5 +10,6 @@
 <% @scientist.experiments.each do |experiment| %>
 <section id="experiment-<%= experiment.id %>">
   <p><%= experiment.name %></p>
+  <%= button_to "Delete Experiment", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete, data: {turbo: false}  %>
 </section>
 <% end %>
