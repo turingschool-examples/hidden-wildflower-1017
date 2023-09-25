@@ -1,0 +1,9 @@
+<h1><%= @lab.name %></h1>
+
+<ul>
+<% @scientists.each do |scientist| %>
+  <li id="scientist-<%= scientist.id %>">
+    <%= scientist.name %> - <%= scientist.experiment_count %> experiments
+  </li>
+<% end %>
+</ul>
