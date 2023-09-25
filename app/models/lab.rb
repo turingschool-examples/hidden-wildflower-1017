@@ -7,6 +7,5 @@ class Lab < ApplicationRecord
     .select("scientists.*, count(experiments) as experiment_count")
     .group("scientists.id")
     .order("experiment_count DESC")
-    # require 'pry';binding.pry
   end
 end
