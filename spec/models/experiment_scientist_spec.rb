@@ -16,7 +16,6 @@ RSpec.describe ExperimentScientist do
   
       expect(ExperimentScientist.assigned_exp_scientist(@beaker.id, @exp1.id)).to eq(@exp_sci1)
       expect(ExperimentScientist.assigned_exp_scientist(@beaker.id, @exp2.id)).to eq(@exp_sci2)
-
     end
   end
 end

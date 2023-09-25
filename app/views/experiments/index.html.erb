@@ -1,6 +1,9 @@
 <h1>All Experiments longer than 6 months:</h1>
+<section class="experiments">
 <ul>
   <% @experiments.each do |experiment| %>
   <li><%= experiment.name %>  Length: <%= experiment.num_months %></li>
 <% end %>
 </ul>
+</section>
+
