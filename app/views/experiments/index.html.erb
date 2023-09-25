@@ -1,0 +1,5 @@
+<h1>Experiments Running Over 6 Months</h1>
+
+<% @experiments.over_6_months.each do |experiment| %>
+  <p><%= experiment.name %>, running <%= experiment.num_months %> months
+<% end %>
