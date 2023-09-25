@@ -14,7 +14,7 @@ RSpec.describe "Experiments Index page", type: :feature do
         visit "/experiments"
 
         expect(page).to_not have_content(@exp2.name)
-        expect(exp1.name).to appear_before(exp3.name)
+        expect(@exp1.name).to appear_before(@exp3.name)
 
       end
     end
