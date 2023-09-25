@@ -5,7 +5,7 @@ RSpec.describe "Scientist Show page" do
     @radcliffe = Lab.create!(name: "Radcliffe College")
     @other = Lab.create!(name: "Other")
 
-    @payne = Scientist.create(name: "Cecila Payne", specialty: "Stars", university: "Harvard", lab: @radcliffe)
+    @payne = Scientist.create(name: "Cecila Payne", specialty: "Astronomy", university: "Harvard", lab: @radcliffe)
     @russell = Scientist.create(name: "Russell", specialty: "Plagarism", university: "other", lab: @other)
 
     @composition = Experiment.create(name: "Composition", objective: "what a star is made of", num_months: 3)
