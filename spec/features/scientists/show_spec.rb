@@ -19,12 +19,20 @@ RSpec.describe "Scientists Show page", type: :feature do
       And I see the names of all of the experiments this scientist is running" do
 
         visit "/scientists/#{@beaker.id}"
+        
+        within('.scientist_info') do
+          expect(page).to have_content(@beaker.name)
+          expect(page).to have_content(@beaker.specialty)
+          expect(page).to have_content(@beaker.university)
+        end
 
-        expect(page).to have_content(@beaker.name)
-        expect(page).to have_content(@beaker.specialty)
-        expect(page).to have_content(@beaker.university)
-        expect(page).to have_content(@muppet_labs.name)
-        expect(page).to have_content(@exp1.name)
+        within('.scientists_lab') do
+          expect(page).to have_content(@muppet_labs.name)
+        end
+
+        within('.scientists_experiments') do
+          expect(page).to have_content(@exp1.name)
+        end
      end
       it "I see a button next to each eperiments name to remove the experiment from that scientist's work load
       When I click the button I am brought back to the scientist show page and no longer see the experiment name
@@ -38,8 +46,9 @@ RSpec.describe "Scientists Show page", type: :feature do
 
         visit "/scientists/#{@bunsen.id}"
 
-        expect(page).to have_content(@exp1.name)
-
+        within('.scientists_experiments') do
+          expect(page).to have_content(@exp1.name)
+        end
       end
     end
   end

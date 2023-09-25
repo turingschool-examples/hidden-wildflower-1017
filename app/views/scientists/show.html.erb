@@ -1,12 +1,18 @@
+<section class="scientist_info">
 <h1>Scientist: <%= @scientist.name %></h1>
 <ul>
   <li><%= @scientist.specialty %></li>
   <li><%= @scientist.university %></li>
+  <section class="scientists_lab">
   <li><%= @scientist.lab.name %></li>
+  </section>
 </ul>
+</section>
+<section class="scientists_experiments">
 <h3>Experiments:</h3>
 <ul>
   <% @scientist.experiments.each do |experiment| %>
     <li><%= experiment.name %> <%= button_to "Remove", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete, data: {turbo: false} %></li>
   <% end %>
 </ul>
+</section>
