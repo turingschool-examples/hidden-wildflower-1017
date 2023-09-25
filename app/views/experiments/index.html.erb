@@ -3,6 +3,7 @@
 <section id="Experiments">
 <% @experiments.each do |experiment| %>
     <p>Experiment: <%= experiment.name %> </p>
+    <p> Objective: <%= experiment.description %> </p>
     <p>Has been running for <%= experiment.num_months %> Months </p>
     <br>
     <% end %>
