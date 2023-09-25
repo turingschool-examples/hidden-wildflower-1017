@@ -1,9 +1,6 @@
 class ExperimentScientistsController < ApplicationController
   def destroy
-    ExperimentScientist
-    .where("scientist_id = #{params[:scientist_id]} and experiment_id = #{params[:id]}")
-    .first
-    .destroy
+    ExperimentScientist.assigned_exp_scientist(params[:scientist_id], params[:id]).destroy
     redirect_to "/scientists/#{params[:scientist_id]}"
   end
 end
