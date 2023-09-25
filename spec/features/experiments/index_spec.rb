@@ -16,7 +16,6 @@ RSpec.describe "experiment#index" do
       expect(page).to have_content(@experiment_2.name)
 
       expect(@experiment_3.name).to appear_before(@experiment_2.name)
-      save_and_open_page
     end
   end
 end
