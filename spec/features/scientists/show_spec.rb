@@ -33,7 +33,6 @@ RSpec.describe "Scientists Show", type: :feature do
       expect(page).to have_content(@experiment_3.objective)
 
       expect(page).to_not have_content(@experiment_2.name)
-      save_and_open_page
     end
 
     it "I see a button next to each experiment that removes that experiment from the scientists workload" do

@@ -12,9 +12,12 @@
 
 <h3>Current Experiments:</h3>
 <% @scientist.experiments.each do |experiment| %>
-  <p><%= experiment.name %>:</p>
-  <ul>
-    <li>Objective: <%= experiment.objective %></li>
-    <li>Duration: <%= experiment.num_months %></li>
-  </ul>
+  <section id="experiment-<%= experiment.id %>">
+    <p><%= experiment.name %>:</p>
+    <ul>
+      <li>Objective: <%= experiment.objective %></li>
+      <li>Duration: <%= experiment.num_months %></li>
+    </ul><br>
+    <%= button_to "Remove Experiment", scientist_experiment_path, method: :delete, params: {experiment_id: experiment.id} %>
+  </section>
 <% end %>
