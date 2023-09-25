@@ -11,5 +11,20 @@ RSpec.describe "Scientist Show Page", type: :feature do
 
   it "I see all of that scientist's information including: name, speciality, and the university where they got their degree" do 
     visit "/scientists/#{@scientist.id}"
+
+    within('.scientist_attributes') do 
+      expect(page).to have_content(@scientist.name)
+      expect(page).to have_content(@scientist.specialty)
+      expect(page).to have_content(@scientist.university)
+      expect(page).to have_content(@lab.name)
+    end
+  end
+
+  it "I can see the names of all th experiments this scientist is running" do 
+    visit "/scientists/#{@scientist.id}"
+
+    within('.scientist_experiments') do 
+      expect(page).to have_content(@experiment.name)
+    end
   end
 end
