@@ -7,7 +7,8 @@ class Experiment < ApplicationRecord
   has_many :scientists, through: :scientist_experiments
 
 
-  def long
-    where(num_months > 5)
+  def self.long
+    where("num_months > ?", 5)
+    .order("num_months DESC")
   end
 end

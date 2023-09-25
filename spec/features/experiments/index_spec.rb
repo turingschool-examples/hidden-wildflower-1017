@@ -8,16 +8,15 @@ RSpec.describe "experiment#index" do
   end
 
   describe "details" do
-    it "shows the names of all the long running experiments (longer than 6 months)" do
+    it "shows the names of all the long running experiments (longer than 6 months) 
+    and shows the names in descending order (longest to shortest)" do
       visit "/experiments"
 
-      expect(page).to have_content(@experiment_2.name)
       expect(page).to have_content(@experiment_3.name)
-    end
+      expect(page).to have_content(@experiment_2.name)
 
-    it "shows the names in descending order (longest to shortest)" do
-
-
+      expect(@experiment_3.name).to appear_before(@experiment_2.name)
+      save_and_open_page
     end
   end
 end
