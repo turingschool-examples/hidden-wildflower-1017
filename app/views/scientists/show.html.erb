@@ -1,0 +1,10 @@
+<h1><%= @scientist.name %> Show Page</h1>
+
+<li><%= @scientist.name %></li>
+<li><%= @scientist.specialty %></li>
+<li><%= @scientist.university %></li>
+<li><%= @scientist.lab.name %></li>
+
+<% @scientist.experiments.each do |experiment| %>
+  <p><%= experiment.name%></p>
+<% end%>
