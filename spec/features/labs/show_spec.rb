@@ -28,7 +28,7 @@ RSpec.describe "Lab Show page", type: :feature do
         expect(@bunsen.name).to appear_before(@beaker.name)
 
         expect(page).to have_content("Number of experiments: 3")
-        expect(page).to have_content("Number of experiments: 2")
+        expect(page).to have_content("Number of experiments: 1")
       end
     end
   end
