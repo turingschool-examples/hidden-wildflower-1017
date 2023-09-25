@@ -1,4 +1,4 @@
- <h1>Scientist Information</h1>
+<h1>Scientist Information</h1>
 <p><strong>Name:</strong> <%= @scientist.name %></p>
 <p><strong>Specialty:</strong> <%= @scientist.specialty %></p>
 <p><strong>University:</strong> <%= @scientist.university %></p>
@@ -8,6 +8,11 @@
 <h2>Experiments:</h2>
 <ul>
   <% @scientist.experiments.each do |experiment| %>
-    <li><%= experiment.name %></li>
+    <li>
+      <%= experiment.name %>
+      <%= form_with model: experiment, url: remove_experiment_scientist_path(scientist_id: @scientist.id, experiment_id: experiment.id), method: :delete do |form| %>
+        <%= form.submit 'Remove' %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
