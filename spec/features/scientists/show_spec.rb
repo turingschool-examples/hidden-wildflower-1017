@@ -24,11 +24,31 @@ RSpec.describe "Scientist Show Page" do
       expect(page).to have_content("Specialty: #{@scientist1.specialty}")
       expect(page).to have_content("Graduated from: #{@scientist1.university}")
       expect(page).to have_content("Current Laboratory: #{@lab1.name}")
-      save_and_open_page
       within("div.current-experis") do
         expect(page).to have_content("#{@experiment1.name}")
         expect(page).to have_content("#{@experiment2.name}")
       end
+    end
+
+    it "next to each experiment's name, I see a button to remove that experiment" do
+      # save_and_open_page
+      within("##{@experiment1.id}") do
+        expect(page).to have_button("Remove")
+      end
+
+      within("##{@experiment2.id}") do
+        expect(page).to have_button("Remove")
+      end
+    end
+
+    it "When I click that button for one experiment I'm brought back to the scientist's show page And I no longer see that experiment's name listed" do
+      within("##{@experiment1.id}") do
+        expect(page).to have_button("Remove")
+        click_button "Remove"
+      end
+      
+      expect(current_path).to eq("/scientists/#{@scientist1.id}")
+      expect(page).to_not have_content("#{@experiment1.name}")
     end
   end
 end

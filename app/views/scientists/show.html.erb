@@ -9,7 +9,16 @@
   <div class="current-experis">
   <ul>
     <% @scientist.experiments.each do |experiment| %>
-      <li><%= experiment.name %></li>
+      <div id=<%= experiment.id %>>
+        <li>
+          <%= experiment.name %> 
+          <%= form_with url: "/experiment_scientists", method: :delete do |form| %>
+            <%= form.hidden_field experiment_id: experiment.id %>
+            <%= form.hidden_field scientist_id: @scientist.id %>
+            <%= form.submit "Remove" %>
+          <% end %>
+        </li>
+      </div><br>
     <% end %>
   </ul>
   </div>
