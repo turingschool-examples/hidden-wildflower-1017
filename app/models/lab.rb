@@ -3,9 +3,9 @@ class Lab < ApplicationRecord
 
   def scientists_by_experiment_count
     scientists
-      .joins(:scientist_experiments)
-      .select("scientists.*, COUNT(scientists.id) as count")
+      .left_joins(:scientist_experiments)
+      .select("scientists.*, COUNT(scientist_experiments.id) as experiment_count")
       .group("scientists.id")
-      .order("count DESC")
+      .order("experiment_count DESC")
   end
 end

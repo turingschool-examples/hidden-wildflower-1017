@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Labs Show", type: :feature do
   before(:each) do
     @lab_1 = Lab.create!(name: "The Testing Locale")
-    @lab_1 = Lab.create!(name: "The Fake Lab")
+    @lab_2 = Lab.create!(name: "The Fake Lab")
     @scientist_1 = Scientist.create!(name: "Chicken", specialty: "Being afraid", university: "Kiwi's Bird School", lab_id: @lab_1.id)
     @scientist_2 = Scientist.create!(name: "Coco", specialty: "Low brain power", university: "Kiwi's Bird School", lab_id: @lab_1.id)
     @scientist_3 = Scientist.create!(name: "Hiccup", specialty: "Poor flight control", university: "Kiwi's Bird School", lab_id: @lab_1.id)
@@ -21,7 +21,7 @@ RSpec.describe "Labs Show", type: :feature do
 
   describe "When I visit the labs show page" do
     it "I see the labs name, and the names of all scientists that work at the lab" do
-      visit "/labs/#{@lab_1}"
+      visit "/labs/#{@lab_1.id}"
 
       expect(page).to have_content(@lab_1.name)
       expect(page).to have_content(@scientist_1.name)
@@ -31,7 +31,7 @@ RSpec.describe "Labs Show", type: :feature do
     end
 
     it "I see the number of experiments associated with each scientist next to their name, and they're sorted by number of experiments descending" do
-      visit "/labs/#{@lab_1}"
+      visit "/labs/#{@lab_1.id}"
 
       expect(page).to have_content("#{@scientist_1.name} - Experiments: 2")
       expect(page).to have_content("#{@scientist_2.name} - Experiments: 3")

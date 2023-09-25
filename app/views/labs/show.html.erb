@@ -1,0 +1,13 @@
+<h1>Lab Overview - <%= @lab.name %></h1>
+
+<h3>Details:</h3>
+<ul>
+  <li>Name: <%= @lab.name %></li>
+</ul>
+
+<h3>Scientists at this lab:</h3>
+<ul>
+  <% @lab.scientists_by_experiment_count.each do |scientist| %>
+    <li><%= scientist.name %> - Experiments: <%= scientist.experiment_count %></li>
+  <% end %>
+</ul>

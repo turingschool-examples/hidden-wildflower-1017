@@ -17,7 +17,7 @@
     <ul>
       <li>Objective: <%= experiment.objective %></li>
       <li>Duration: <%= experiment.num_months %></li>
-    </ul><br>
+    </ul>
     <%= button_to "Remove Experiment", scientist_experiment_path, method: :delete, params: {experiment_id: experiment.id} %>
-  </section>
+  </section><br>
 <% end %>
