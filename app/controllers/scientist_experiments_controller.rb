@@ -1,0 +1,3 @@
+class ScientistExperimentsController < ApplicationController
+  
+end
