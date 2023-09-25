@@ -1,0 +1,21 @@
+<h1> Scientist Show Page </h1>
+
+<section id="Scientist-<%= @scientist.id %>">
+<p> <%= @scientist.name %> </p>
+<p> Studied <%= @scientist.specialty %> </p>
+<p> Degree received from <%= @scientist.university %> </p>
+</section>
+
+<section id="Scientist_Lab-<%= @lab.id %>">
+<h2> Lab </h2>
+<p> <%= @lab.name %> </p>
+</section>
+
+<section id="Scientist_Exp-<%= @scientist.id %>">
+<h3> Experiments </h3>
+<ul> 
+    <% @experiments.each do |experiment| %>
+        <li> <%= experiment.name %> </li>
+    <% end %>
+</ul>
+</section>
