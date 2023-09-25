@@ -12,10 +12,10 @@ RSpec.describe Lab do
         experiment1 = Experiment.create!(name: "Manhattan Project", objective: "Develop the first nuclear weapons", num_months: 36)
         experiment2 = Experiment.create!(name: "Trinity", objective: "Test the first nuclear weapons", num_months: 5)
         scientist1.experiments << experiment1
-        scientist1.experiments << experiment2
+        scientist2.experiments << experiment2
         scientist2.experiments << experiment1
 
-        expect(lab1.scientists_ordered_by_experiment_count).to eq([scientist1, scientist2])
+        expect(lab1.scientists_ordered_by_experiment_count).to eq([scientist2, scientist1])
       end
     end
   end
