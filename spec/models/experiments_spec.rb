@@ -15,6 +15,7 @@ RSpec.describe Experiment, type: :model do
       @exp_4 = Experiment.create!(name: "EXP 4", objective: "SCIENCE", num_months: 9)
 
       expect(Experiment.long_running(6)).to eq([@exp_3, @exp_2, @exp_4])
+      expect(Experiment.long_running(3)).to eq([@exp_3, @exp_2, @exp_4, @exp_1])
     end
   end
 end
