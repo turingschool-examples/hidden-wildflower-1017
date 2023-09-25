@@ -23,13 +23,19 @@
 @experiment_1 = Experiment.create(
   name: "MINERvA",
   objective: "study neutrino reactions with five different nuclei",
-  num_months: 4
+  num_months: 9
 )
 
 @experiment_2 = Experiment.create(
   name: "Cell Structure under Intense Heat",
   objective: "study the changes in cell structure in extreme heat",
-  num_months: 2
+  num_months: 5
+)
+
+@experiment_3 = Experiment.create(
+  name: "How silly is too silly",
+  objective: "understanding the impact of being silly",
+  num_months: 15
 )
 
 ScientistExperiment.create(scientist: @scientist_1, experiment: @experiment_1)
