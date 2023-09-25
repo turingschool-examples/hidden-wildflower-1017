@@ -5,6 +5,11 @@
 <p id="experiments">
 <h3>Experiments:</h3>
 <% @scientist.experiments.each do |experiment| %>
-  <li><%= experiment.name %></li>
+  <div id="experiment-<%= experiment.id %>">
+    <p>
+      <%= experiment.name %>
+      <%= button_to 'Remove', destroy_scientist_experiment_path(@scientist, experiment), method: :delete %>
+    </p>
+  </div>
 <% end %>
 </p>
