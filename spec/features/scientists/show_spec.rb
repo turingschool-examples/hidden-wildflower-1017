@@ -10,11 +10,11 @@ RSpec.describe "scientist#show" do
     @experiment_1 = Experiment.create!(name: "MINERvA", objective: "study neutrino reactions with five different nuclei", num_months: 4)
     @experiment_2 = Experiment.create!(name: "BeardTech", objective: "study beard growth in little boys with german accents", num_months: 6)
 
-    @marie_exp_1 = @scientist_1.scientist_experiments.create!(scientist_id: @scientist_1.id, experiment_id: @experiment_1)
-    @marie_exp_2 = @scientist_1.scientist_experiments.create!(scientist_id: @scientist_1.id, experiment_id: @experiment_2)
+    @marie_exp_1 = @scientist_1.scientist_experiments.create!(scientist_id: @scientist_1.id, experiment_id: @experiment_1.id)
+    @marie_exp_2 = @scientist_1.scientist_experiments.create!(scientist_id: @scientist_1.id, experiment_id: @experiment_2.id)
 
-    @dexter_exp_1 = @scientist_2.scientist_experiments.create!(scientist_id: @scientist_2.id, experiment_id: @experiment_1)
-    @dexter_exp_2 = @scientist_2.scientist_experiments.create!(scientist_id: @scientist_2.id, experiment_id: @experiment_2)
+    @dexter_exp_1 = @scientist_2.scientist_experiments.create!(scientist_id: @scientist_2.id, experiment_id: @experiment_1.id)
+    @dexter_exp_2 = @scientist_2.scientist_experiments.create!(scientist_id: @scientist_2.id, experiment_id: @experiment_2.id)
   end
 
   describe "details" do
@@ -30,7 +30,7 @@ RSpec.describe "scientist#show" do
     it "shows the name of the lab where this scientist works and the names of all of the experiments this scientist is running" do
       visit "/scientists/#{@scientist_1.id}"
 
-      expect(page).to have_content(@lab.name)
+      expect(page).to have_content(@lab_1.name)
       expect(page).to have_content(@experiment_1.name)
       expect(page).to have_content(@experiment_2.name)
 
