@@ -15,8 +15,8 @@ RSpec.describe "Mechanics Show Page", type: :feature do
     @scientist_2.experiments << [@experiment_1, @experiment_2, @experiment_3]
   end
 
-  describe "As a visitor" do
-    describe "When I visit a scientists show page" do
+  describe "as a visitor" do
+    describe "when I visit a scientists show page" do
       it "displays their name, specialty, and university where they got their degree as well as the lab where they work including a list of all of their experiments" do
         visit scientist_path(@scientist_1)
 
