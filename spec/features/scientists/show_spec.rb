@@ -12,7 +12,7 @@ RSpec.describe "Mechanics Show Page", type: :feature do
     @experiment_3 = Experiment.create!(name: "Rockwell", objective: "study rocks in the CA redwoods", num_months: 10)
 
     @scientist_1.experiments << [@experiment_1]
-    @scientist_2.experiments << [@experiment_2, @experiment_3]
+    @scientist_2.experiments << [@experiment_1, @experiment_2, @experiment_3]
   end
 
   describe "As a visitor" do
@@ -25,6 +25,24 @@ RSpec.describe "Mechanics Show Page", type: :feature do
         expect(page).to have_content(@scientist_1.university)
         expect(page).to have_content(@lab.name)
         expect(page).to have_content(@experiment_1.name)
+      end
+
+      it "then next to each experiment's name, I see a button to remove that experiment from that scientist's work load and when I click that button for one experiment, I'm brought back to the scientist's show page and I no longer see that experiment's name listed" do
+        visit scientist_path(@scientist_1)
+        
+        expect(page).to have_content(@experiment_1.name)
+
+        click_button "Remove"
+        
+        expect(page).not_to have_content(@experiment_1.name)
+    end
+
+      it "when I visit a different scientist's show page that is working on that same experiment, then I see that the experiment is still on the other scientist's work load" do
+        visit scientist_path(@scientist_2)
+      
+        expect(page).to have_content(@experiment_1.name)
+        expect(page).to have_content(@experiment_2.name)
+        expect(page).to have_content(@experiment_3.name)
       end
     end
   end

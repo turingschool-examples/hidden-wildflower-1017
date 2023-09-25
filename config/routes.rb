@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :scientists, only: [:show]
+  resources :scientists, only: [:show] do
+    delete 'remove_experiment', on: :member
+  end
 end
