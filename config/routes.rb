@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :scientists, only: [:show] do
     delete 'remove_experiment', on: :member
   end
+
+  resources :experiments, only: [:index]
 end
