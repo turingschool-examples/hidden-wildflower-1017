@@ -1,9 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Lab do
-  it {should have_many :scientists}
-  it {should have_many(:experiments).through(:scientists)}
-
+RSpec.describe "Lab Show page" do
   before(:each) do
     @radcliffe = Lab.create!(name: "Radcliffe College")
     @other = Lab.create!(name: "Other")
@@ -31,10 +28,17 @@ RSpec.describe Lab do
     ExperimentScientist.create(scientist: @sergei, experiment: @planets)
   end
 
-  describe "with_count" do
-    it "makes a virtual count column and displays them in order from great count to least" do
-      expect(@radcliffe.with_count.first.count).to eq(4)
-      expect(@radcliffe.with_count).to eq([@payne, @sergei, @russell])
-    end
+  it "shows the names and count of experiments" do
+    visit lab_path(@radcliffe)
+
+    expect(find("#scientist-#{@payne.id}")).to have_content(4)
+    expect(find("#scientist-#{@sergei.id}")).to have_content(3)
+    expect(find("#scientist-#{@russell.id}")).to have_content(1)
   end
-end
+
+  it "shows the names in order of most experiments ot least" do
+    visit lab_path(@radcliffe)
+
+    expect(@payne.name).to appear_before(@sergei.name)
+    expect(@sergei.name).to appear_before(@russell.name)
+  end

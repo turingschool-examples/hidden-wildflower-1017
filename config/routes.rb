@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   resources :scientists, only: :show
   resources :experiments, only: [:index, :destroy]
+  resources :labs, only: :show
 end

@@ -24,8 +24,9 @@ RSpec.describe Experiment do
     ExperimentScientist.create(scientist: @russell, experiment: @credit)
   end
 
-
-  it "can order from longest to shortest experiments over 6 months " do
-    expect(Experiment.longer_than(6)).to eq([@break, @space, @credit])
+  describe ".longer_than(#)" do
+    it "can order from longest to shortest experiments over 6 months " do
+      expect(Experiment.longer_than(6)).to eq([@break, @space, @credit])
+    end
   end
 end
