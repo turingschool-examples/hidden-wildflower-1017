@@ -17,6 +17,8 @@ RSpec.describe "Experiments Index Page" do
         expect(page).to have_content(experiment_1.name)
         expect(page).to_not have_content(experiment_5.name)
         expect(page).to_not have_content(experiment_6.name)
+        expect(experiment_1.name).to appear_before(experiment_3.name)
+        expect(experiment_3.name).to appear_before(experiment_4.name)
       end
     end
   end
