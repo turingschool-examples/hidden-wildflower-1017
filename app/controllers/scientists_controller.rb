@@ -5,7 +5,7 @@ class ScientistsController < ApplicationController
 
   def destroy
     scientist = Scientist.find(params[:id])
-# require 'pry'; binding.pry
-    Experiement.find(params[:id])
+    # require 'pry'; binding.pry
+    experiemnt = scientist.experiements.find(params[:experiement_id])
   end
 end
