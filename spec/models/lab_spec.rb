@@ -6,7 +6,7 @@ RSpec.describe Lab do
   describe "instance methods" do
     before(:each) do
       @lab_1 = Lab.create!(name: "The Testing Locale")
-      @lab_1 = Lab.create!(name: "The Fake Lab")
+      @lab_2 = Lab.create!(name: "The Fake Lab")
       @scientist_1 = Scientist.create!(name: "Chicken", specialty: "Being afraid", university: "Kiwi's Bird School", lab_id: @lab_1.id)
       @scientist_2 = Scientist.create!(name: "Coco", specialty: "Low brain power", university: "Kiwi's Bird School", lab_id: @lab_1.id)
       @scientist_3 = Scientist.create!(name: "Hiccup", specialty: "Poor flight control", university: "Kiwi's Bird School", lab_id: @lab_1.id)
