@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Experiment do
   it { should have_many :experiment_scientists }
   it { should have_many(:scientists).through(:experiment_scientists)}
+  # it { is_expected.to have_many(:experiment_scientists).dependent(:destroy) }
 
   before(:each) do
     @radcliffe = Lab.create!(name: "Radcliffe College")

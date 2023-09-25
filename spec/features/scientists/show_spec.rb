@@ -6,6 +6,7 @@ RSpec.describe "Scientist Show page" do
     @other = Lab.create!(name: "Other")
 
     @payne = Scientist.create(name: "Cecila Payne", specialty: "Astronomy", university: "Harvard", lab: @radcliffe)
+    @sergei = Scientist.create(name: "sergei", specialty: "Astronomy", university: "Harvard", lab: @radcliffe)
     @russell = Scientist.create(name: "Russell", specialty: "Plagarism", university: "other", lab: @other)
 
     @composition = Experiment.create(name: "Composition", objective: "what a star is made of", num_months: 3)
@@ -15,6 +16,7 @@ RSpec.describe "Scientist Show page" do
     ExperimentScientist.create(scientist: @payne, experiment: @composition)
     ExperimentScientist.create(scientist: @payne, experiment: @break)
     ExperimentScientist.create(scientist: @payne, experiment: @stars)
+    ExperimentScientist.create(scientist: @sergei, experiment: @stars)
   end
 
   it "shows scientists and their attribures" do
@@ -33,6 +35,10 @@ RSpec.describe "Scientist Show page" do
   end
 
   it "can remove experiment from scientist" do
+    visit scientist_path(@sergei)
+
+    expect(page).to have_content(@stars.name)
+
     visit scientist_path(@payne)
 
     expect(page).to have_content(@composition.name)
@@ -42,10 +48,15 @@ RSpec.describe "Scientist Show page" do
     expect(page).to have_button("Delete #{@stars.name}")
 
     click_button "Delete #{@stars.name}"
-
+    
     expect(page).to have_content(@composition.name)
     expect(page).to have_content(@break.name)
     expect(page).to_not have_content(@stars.name)
+
+    visit scientist_path(@sergei)
+
+    expect(page).to have_content(@stars.name)
+    
   end
 end
     
