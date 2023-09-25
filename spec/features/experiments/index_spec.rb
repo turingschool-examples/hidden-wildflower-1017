@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Scientist Show page" do
+RSpec.describe "Experiments index page" do
   before(:each) do
     @radcliffe = Lab.create!(name: "Radcliffe College")
     @other = Lab.create!(name: "Other")
