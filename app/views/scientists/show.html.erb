@@ -7,9 +7,10 @@
 
 <section class="experiments">
   <h3>Experiments: </h3>
+  <ul>
   <% @scientist.experiments.each do |experiment| %>
-    <%= experiment.name %> <%= button_to "Delete #{experiment.name}", "/scientist_experiment/#{experiment.id}?scientist=#{@scientist.id}", method: :delete %>
-
-  <% end %>
+    <li><%= experiment.name %> <%= button_to "Delete #{experiment.name}", scientist_experiment_path(experiment.id, @scientist.id), method: :delete %>
+    <% end %>
+    </ul>
 </section>
 

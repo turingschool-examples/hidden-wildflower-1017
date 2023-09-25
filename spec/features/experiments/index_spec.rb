@@ -13,11 +13,12 @@ RSpec.describe "the Experiments Index page" do
 
     visit experiments_path
 
-    expect(page).to have_content("#{experiment_2.name}, running #{experiment_2.num_months} months")
-    expect(page).to have_content("#{experiment_3.name}, running #{experiment_3.num_months} months")
-    expect(page).to have_content("#{experiment_4.name}, running #{experiment_4.num_months} months")
+    expect(page).to have_content("#{experiment_2.name}: running #{experiment_2.num_months} months")
+    expect(page).to have_content("#{experiment_3.name}: running #{experiment_3.num_months} months")
+    expect(page).to have_content("#{experiment_4.name}: running #{experiment_4.num_months} months")
     expect(page).to_not have_content(experiment_1.name)
-    expect("#{experiment_4.name}, running #{experiment_4.num_months} months").to appear_before("#{experiment_2.name}, running #{experiment_2.num_months} months")
-    expect("#{experiment_2.name}, running #{experiment_2.num_months} months").to appear_before("#{experiment_3.name}, running #{experiment_3.num_months} months")
+    expect("#{experiment_4.name}: running #{experiment_4.num_months} months").to appear_before("#{experiment_2.name}: running #{experiment_2.num_months} months")
+    expect("#{experiment_2.name}: running #{experiment_2.num_months} months").to appear_before("#{experiment_3.name}: running #{experiment_3.num_months} months")
   end
 end
+
