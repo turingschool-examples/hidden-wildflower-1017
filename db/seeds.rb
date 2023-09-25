@@ -15,7 +15,7 @@
 @experiment_1 = Experiment.create(
   name: "MINERvA",
   objective: "study neutrino reactions with five different nuclei",
-  num_months: 4
+  num_months: 9
 )
 
 @experiment_2 = Experiment.create(
