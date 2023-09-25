@@ -8,9 +8,12 @@
   <h4>Experiments:</h4>
   <ul>
     <% @scientist.experiments.each do |experiment| %>
-      <li>
-        <p><%= experiment.name %></p>
-      </li>
+      <div id="experiment-<%= experiment.id %>">
+        <li>
+          <p><%= experiment.name %></p>
+          <%= button_to "Remove Experiment", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete, data: {turbo: false} %>
+        </li>
+      </div>
     <% end %>
   </ul>
 </div>
