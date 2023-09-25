@@ -6,6 +6,6 @@
 <p>Experiments <%= @scientist.name %> is running:</p>
 <ul>
   <% @scientist.experiments.each do |experiment| %>
-    <li><%= experiment.name %> <%= button_to "Remove experiment #{experiment.id}", "/scientists/#{@scientist.id}", method: :destroy %></li>
+    <li><%= experiment.name %> <%= button_to "Remove experiment #{experiment.id}", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete %></li>
   <% end %>
 </ul>
