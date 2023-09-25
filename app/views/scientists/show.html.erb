@@ -8,7 +8,7 @@
 <section id="experiments">
   <ul>
     <% @scientist.experiments.each do |experiment| %>
-      <li><%= experiment.name %></li>
+      <li><%= experiment.name %> <%= button_to "Delete #{experiment.name}", scientist_experiment_path(@scientist, experiment), method: :delete %></li>
     <% end %>
   </ul>
 </section>
