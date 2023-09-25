@@ -9,4 +9,7 @@ Rails.application.routes.draw do
 
   # US 2
   delete "/scientists/:scientist_id/experiments/:experiment_id", to: "scientists#remove_experiment"
+
+  # US 3
+  get "/experiments", to: "experiments#index"
 end

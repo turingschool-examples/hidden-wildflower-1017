@@ -5,4 +5,8 @@ class Experiment < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :objective
   validates_presence_of :num_months
+
+  def self.long_experiments
+    where('num_months > ?', 6).order(num_months: :desc)
+  end
 end
