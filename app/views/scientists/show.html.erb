@@ -6,5 +6,5 @@
 <p> Current Experiments: </p>
 <% @scientist.experiments.each do |experiment| %>
   <p><%= experiment.name %></p>
-  <p><%= button_to "Delete #{experiment.name}", "/scientists/#{scientist.id}", method: :delete %></p>
+  <p><%= button_to "Remove #{experiment.name}", "/scientists/#{@scientist.id}", method: :delete %></p>
   <% end %>
