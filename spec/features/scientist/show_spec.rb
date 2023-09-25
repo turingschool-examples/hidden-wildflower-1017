@@ -27,7 +27,7 @@ RSpec.describe "Scientist" do
   end
 
   # Remove button- US2
-  it "has a button to, and removes, experiemnts from a scientists show page" do 
+  it "has a button to remove experiemnts from a scientists show page" do 
     visit "/scientists/#{@hill.id}"
 
     expect(page).to have_button("Remove #{@ollie.name}")
