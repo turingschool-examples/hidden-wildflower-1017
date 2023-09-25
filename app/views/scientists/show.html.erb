@@ -2,3 +2,8 @@
 <p>Name: <%= @scientist.name %></p>
 <p>Specialty: <%= @scientist.specialty %></p>
 <p>University: <%= @scientist.university %></p>
+<p>Lab: <%= @scientist.lab.name %></p>
+<p>Experiments: </p>
+  <% @scientist.experiments.each do |experiment| %>
+  <p><%= experiment.name %></p>
+<% end %>
