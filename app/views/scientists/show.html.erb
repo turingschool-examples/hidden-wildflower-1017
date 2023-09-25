@@ -10,6 +10,11 @@
   <ol>
     <% @scientist.experiments.each do |experiment| %>
       <li><%= experiment.name %></li>
-    <% end %>
+      <form action="/scientists/<%= @scientist.id %>/experiments/<%= experiment.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="Remove">
+      </form>    
+  <% end %>
   </ol>
 </section>
