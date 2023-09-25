@@ -15,7 +15,12 @@
 <h3> Experiments </h3>
 <ul> 
     <% @experiments.each do |experiment| %>
-        <li> <%= experiment.name %> </li>
+        <li> <%= experiment.name %>
+          <%= form_with(url: scientist_scientists_experiment_path(@scientist, experiment), method: :delete, local: true) do |f| %>
+          <%= f.hidden_field :experiment_name, value: experiment.name %>
+          <%= f.submit "Remove #{experiment.name} experiment from work load" %>
+          <% end %>
+        </li>
     <% end %>
 </ul>
 </section>
