@@ -32,3 +32,5 @@
 @scientist_experiment_6 = ScientistExperiment.create!(scientist_id: @scientist_5.id, experiment_id: @experiment_4.id)
 @scientist_experiment_7 = ScientistExperiment.create!(scientist_id: @scientist_5.id, experiment_id: @experiment_5.id)
 @scientist_experiment_8 = ScientistExperiment.create!(scientist_id: @scientist_5.id, experiment_id: @experiment_6.id)
+@scientist_experiment_9 = ScientistExperiment.create!(scientist_id: @scientist_3.id, experiment_id: @experiment_6.id)
+@scientist_experiment_10 = ScientistExperiment.create!(scientist_id: @scientist_3.id, experiment_id: @experiment_5.id)
