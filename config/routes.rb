@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   resources :scientists, only: [:show]
   delete "/scientists/:scientist_id/experiments/:experiment_id", to: "scientist_experiments#destroy"
+  resources :experiments, only: [:index]
 end
