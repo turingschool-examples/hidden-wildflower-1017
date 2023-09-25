@@ -1,4 +1,4 @@
 class ExperimentScientist < ApplicationRecord
   belongs_to :scientist
-  belongs_to :experiment, dependent: :destroy
+  belongs_to :experiment
 end

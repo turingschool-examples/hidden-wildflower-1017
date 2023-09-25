@@ -48,7 +48,7 @@ RSpec.describe "Scientist Show page" do
     expect(page).to have_button("Delete #{@stars.name}")
 
     click_button "Delete #{@stars.name}"
-    
+
     expect(page).to have_content(@composition.name)
     expect(page).to have_content(@break.name)
     expect(page).to_not have_content(@stars.name)
