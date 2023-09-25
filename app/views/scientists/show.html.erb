@@ -4,4 +4,13 @@
   <p>Name: <%= @scientist.name %></p>
   <p>Specialty: <%= @scientist.specialty %></p>
   <p>Graduated from: <%= @scientist.university %></p>
+  <p>Current Laboratory: <%= @scientist.lab.name %></p>
+  <p>Current Experiments: </p>
+  <div class="current-experis">
+  <ul>
+    <% @scientist.experiments.each do |experiment| %>
+      <li><%= experiment.name %></li>
+    <% end %>
+  </ul>
+  </div>
 </div>

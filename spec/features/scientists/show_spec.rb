@@ -12,6 +12,9 @@ RSpec.describe "Scientist Show Page" do
     @experiment2 = Experiment.create!(name: "Cell Test", objective: "To test cells", num_months: 2)
     @experiment3 = Experiment.create!(name: "PH Test", objective: "To test PH levels", num_months: 3)
 
+    @experiment_scientist1 = ExperimentScientist.create!(experiment: @experiment1, scientist: @scientist1)
+    @experiment_scientist2 = ExperimentScientist.create!(experiment: @experiment2, scientist: @scientist1)
+
     visit "/scientists/#{@scientist1.id}"
   end
 
@@ -20,6 +23,12 @@ RSpec.describe "Scientist Show Page" do
       expect(page).to have_content("Name: #{@scientist1.name}")
       expect(page).to have_content("Specialty: #{@scientist1.specialty}")
       expect(page).to have_content("Graduated from: #{@scientist1.university}")
+      expect(page).to have_content("Current Laboratory: #{@lab1.name}")
+      save_and_open_page
+      within("div.current-experis") do
+        expect(page).to have_content("#{@experiment1.name}")
+        expect(page).to have_content("#{@experiment2.name}")
+      end
     end
   end
 end
