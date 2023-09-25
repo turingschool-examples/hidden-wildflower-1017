@@ -31,7 +31,6 @@ RSpec.describe "Scientist Show Page" do
     end
 
     it "next to each experiment's name, I see a button to remove that experiment" do
-      # save_and_open_page
       within("##{@experiment1.id}") do
         expect(page).to have_button("Remove")
       end
@@ -46,7 +45,7 @@ RSpec.describe "Scientist Show Page" do
         expect(page).to have_button("Remove")
         click_button "Remove"
       end
-      
+
       expect(current_path).to eq("/scientists/#{@scientist1.id}")
       expect(page).to_not have_content("#{@experiment1.name}")
     end

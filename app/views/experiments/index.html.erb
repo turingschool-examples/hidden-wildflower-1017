@@ -1,0 +1,10 @@
+<h1>Experiments</h1>
+
+<h3>Long Standing Experiments (Longer than 6 months)</h3>
+<div>
+  <ul>
+    <% @long_experiments.each do |experiment| %>
+      <li><%= experiment.name %></li><br>
+    <% end %>
+  </ul>
+</div>
