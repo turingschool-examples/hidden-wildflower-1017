@@ -1,0 +1,16 @@
+<h2><%= @scientist.name %></h2>
+<div id="scientist-info">
+  <p><strong>Specialty:</strong> <%= @scientist.specialty %></p>
+  <p><strong>University:</strong> <%= @scientist.university %></p>
+  <p><strong>Lab:</strong> <%= @scientist.lab.name %></p>
+</div>
+<div id="experiments">
+  <h4>Experiments:</h4>
+  <ul>
+    <% @scientist.experiments.each do |experiment| %>
+      <li>
+        <p><%= experiment.name %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
