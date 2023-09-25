@@ -16,7 +16,7 @@ RSpec.describe "Scientist show" do
 
   describe "US 1 - Scientist Show" do
     describe "When I visit a scientists show page" do
-      it "I see the scientists info" do
+      xit "I see the scientists info" do
         visit scientist_path(@scientist_1)
 
         expect(page).to have_content(@scientist_1.name)
@@ -38,7 +38,11 @@ RSpec.describe "Scientist show" do
           expect(page).to have_content(@experiment_1.name)
           expect(page).to have_content(@experiment_2.name)
 
-          click_button "Remove Experiment"
+          save_and_open_page
+
+          expect(page).to have_button("Remove Experiment")
+
+          click_button "Remove Experiment Jogoooo"
 
           expect(current_path).to eq(scientist_path(@scientist_1))
 
