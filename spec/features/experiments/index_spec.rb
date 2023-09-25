@@ -18,8 +18,9 @@ RSpec.describe "Experiments Index", type: :feature do
     it "I see the names of all running experiments (longer than 6 months), and they are in descending order (longest to shortest)" do
       visit "/experiments"
 
-      expect(@experiment_3.name).to appear_before(@experiment_1.name, text_only: true)
+      expect(@experiment_3.name).to appear_before(@experiment_1.name, only_text: true)
       expect(page).to_not have_content(@experiment_2.name)
+      save_and_open_page
     end
   end
 end

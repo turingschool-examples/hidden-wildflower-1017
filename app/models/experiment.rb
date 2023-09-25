@@ -4,7 +4,7 @@ class Experiment < ApplicationRecord
 
   def self.long_experiments
     self
-      .where("num_months >= 6")
+      .where("num_months > 6")
       .order("num_months DESC")
   end
 end

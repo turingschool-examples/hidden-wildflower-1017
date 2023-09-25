@@ -1,0 +1,10 @@
+<h1>Experiments!</h1>
+<p>Note: this page only displays experiments with a running duration of LONGER THAN 6 months!</p>
+
+<% @experiments.each do |experiment| %>
+  <p><%= experiment.name %></p>
+  <ul>
+      <li>Objective: <%= experiment.objective %></li>
+      <li>Duration: <%= experiment.num_months %> months</li>
+  </ul>
+<% end %>
