@@ -4,6 +4,11 @@ RSpec.describe Experiment do
   it {should have_many :scientist_experiments}
   it {should have_many(:scientists).through(:scientist_experiments)}
 
+  it {should validate_presence_of(:name)}
+  it {should validate_presence_of(:objective)}
+  it {should validate_presence_of(:num_months)}
+ 
+
   describe "methods" do
     before(:each) do
       load_test_data

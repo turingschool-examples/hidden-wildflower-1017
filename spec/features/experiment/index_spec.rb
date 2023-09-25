@@ -11,7 +11,7 @@ RSpec.describe "Experiment Index Page" do
   describe "When I visit a scientist's show page" do
     it "I see the names of all long running experiments (longer than 6 months)," do
       visit experiments_path
-    save_and_open_page
+    
       expect(page).to_not have_content(@experiment_1.name)
       expect(page).to have_content(@experiment_2.name)
     end
