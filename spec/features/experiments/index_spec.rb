@@ -26,7 +26,6 @@ RSpec.describe "Mechanics Show Page", type: :feature do
        
         expect(page).not_to have_selector('li', text: "MINERvA")
         expect(page).not_to have_selector('li', text: "MINERaL")
-        save_and_open_page
       end
     end
   end
