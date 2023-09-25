@@ -8,10 +8,12 @@
 
 
 <section id="lab">
+<h3>Current Lab</h3>
 <p>Lab: <%= @scientist.lab.name %></p>
 </section>
 
 <section id="current_experiments">
+<h3>Current Experiments</h3>
   <% @scientist.experiments.each do |experiment| %>
     <li>Name: <%= experiment.name %>
   <% end %> 

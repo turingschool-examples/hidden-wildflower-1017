@@ -19,7 +19,8 @@ RSpec.describe "scientist show page" do
 
   it "shows the scientists information and the experiments that they are running" do 
     visit scientist_path(@sci_1)
-
+    save_and_open_page
+    
     within "#details" do 
       expect(page).to have_content("Name: #{@sci_1.name}")
       expect(page).to have_content("Specialty: #{@sci_1.specialty}")
