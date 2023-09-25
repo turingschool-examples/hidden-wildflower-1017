@@ -82,7 +82,7 @@ RSpec.describe "Scientists Show Page" do
         end
     end
 
-    xdescribe "Delete an Experiment" do
+    describe "Delete an Experiment" do
       it "deletes an experiment from the show page" do
         visit "/scientists/#{@scientist1.id}"
         expect(page).to have_content(@experiment1.name)
@@ -90,8 +90,8 @@ RSpec.describe "Scientists Show Page" do
         click_button "Delete Experiment"
 
     
-        expect(current_path).to eq("/scientists/#{@scientist3.id}")
-        expect(page).not_to have_content(@experiment4.name)
+        expect(current_path).to eq("/scientists/#{@scientist1.id}")
+        expect(page).not_to have_content(@experiment1.name)
       end
     end
 end

@@ -9,9 +9,10 @@
   <section id= "experiment-<%= experiment.id %>">
     <li>
       <%= experiment.name %>
-      <%= form_with url: "/scientists/#{@scientist.id}/experiments", method: :delete, data:{turbo: false} do |form| %>
-        <%= form.submit "Delete Experiment" %>
-      <% end %>
+      <%= form_with url: "/scientist_experiments/#{experiment.id}", method: :delete do |form| %>
+            <%= form.hidden_field :scientist_id, value: @scientist.id %>
+            <%= form.submit "Delete Experiment" %>
+          <% end %>
     </li>
   <% end %>
 </ul>
