@@ -43,5 +43,35 @@ RSpec.describe "scientists show page" do
       expect(page).to_not have_content(@experiment_3.name)
       expect(page).to_not have_content(@lab_2.name)
     end
+
+    #  --------   User Story 2, Remove an Experiment from a Scientist
+    # When I visit a scientist's show page
+    # Then next to each experiment's name, I see a button to remove that experiment from that scientist's work load
+    # When I click that button for one experiment
+    # I'm brought back to the scientist's show page
+    # And I no longer see that experiment's name listed
+    # And when I visit a different scientist's show page that is working on that same experiment,
+    # Then I see that the experiment is still on the other scientist's work load
+    it "next to each experiment's name, I see a button to remove that experiment" do
+      visit "/scientists/#{@scientist_1.id}"
+      expect(page).to have_content(@scientist_1.name)
+      expect(page).to have_content(@experiment_1.name)
+      expect(page).to have_content(@experiment_2.name)
+      
+      within("#exp-#{@experiment_2.id}") do
+        expect(page).to have_button("Remove")
+      end
+      
+      within("#exp-#{@experiment_1.id}") do
+        expect(page).to have_button("Remove")
+        click_button("Remove")
+      end
+      
+      expect(current_path).to eq("/scientists/#{@scientist_1.id}")
+      expect(page).to_not have_content(@experiment_1.name)
+      
+      visit "/scientists/#{@scientist_2.id}"
+      expect(page).to have_content(@experiment_1.name)
+    end
   end
 end
