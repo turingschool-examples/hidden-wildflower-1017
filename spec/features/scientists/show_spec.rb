@@ -19,6 +19,13 @@ RSpec.describe "Scientists Show Page" do
      lab: @lab2
      )
 
+     @scientist3 = Scientist.create!(
+     name: 'Eden Ross',
+     specialty: 'Chemist',
+     university: 'Chemistry University',
+     lab: @lab2
+     )
+
      @experiment1 = Experiment.create!(
      name: 'SCP 900',
      objective: 'Study DNA replication',
@@ -37,10 +44,16 @@ RSpec.describe "Scientists Show Page" do
      num_months: 9
      )
 
+     @experiment4 = Experiment.create!(
+     name: 'SCP 999',
+     objective: 'Unkowns',
+     num_months: 9
+     )
+
      ScientistExperiment.create!(scientist: @scientist1, experiment: @experiment1)
-     ScientistExperiment.create!(scientist: @scientist1, experiment: @experiment2)
      ScientistExperiment.create!(scientist: @scientist2, experiment: @experiment2)
      ScientistExperiment.create!(scientist: @scientist2, experiment: @experiment3)
+     ScientistExperiment.create!(scientist: @scientist3, experiment: @experiment4)
     end
     describe "Scientist information" do
         it "displays scientist info" do
@@ -65,8 +78,20 @@ RSpec.describe "Scientists Show Page" do
           visit "/scientists/#{@scientist1.id}"
 
           expect(page).to have_content(@experiment1.name)
-          expect(page).to have_content(@experiment2.name)
           expect(page).not_to have_content(@experiment3.name)
         end
-    end  
+    end
+
+    xdescribe "Delete an Experiment" do
+      it "deletes an experiment from the show page" do
+        visit "/scientists/#{@scientist1.id}"
+        expect(page).to have_content(@experiment1.name)
+
+        click_button "Delete Experiment"
+
+    
+        expect(current_path).to eq("/scientists/#{@scientist3.id}")
+        expect(page).not_to have_content(@experiment4.name)
+      end
+    end
 end
