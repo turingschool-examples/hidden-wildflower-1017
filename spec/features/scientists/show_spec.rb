@@ -50,5 +50,38 @@ RSpec.describe "Scientists show page" do
         expect(page).to have_content(@experiment_2.name)
       end
     end
+
+    it "has a button to delete that experiments from a specific scientist" do 
+      visit scientist_path(@scientist_1)
+
+      within("#experiment-#{@experiment_1.id}") do
+        expect(page).to have_button("Delete Experiment")
+        click_button "Delete Experiment"
+        expect(current_path).to eq(scientist_path(@scientist_1))
+      end
+
+      within("#experiment-#{@experiment_2.id}") do
+        expect(page).to have_button("Delete Experiment")
+      end
+
+      expect(page).to_not have_content(@experiment_1.name)
+      expect(page).to have_content(@experiment_2.name)
+    end
+
+    it "does not delete the experiment from another scientists show page who is also working on that experiment" do 
+      visit scientist_path(@scientist_1)
+
+      within("#experiment-#{@experiment_2.id}") do
+        expect(page).to have_button("Delete Experiment")
+        click_button "Delete Experiment"
+        expect(current_path).to eq(scientist_path(@scientist_1))
+      end
+
+      visit scientist_path(@scientist_2)
+
+      within("#experiment-#{@experiment_2.id}") do
+        expect(page).to have_content(@experiment_2.name)
+      end
+    end
   end
 end
