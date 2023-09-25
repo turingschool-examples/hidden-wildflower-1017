@@ -28,8 +28,9 @@ RSpec.describe "Scientists Show", type: :feature do
       expect(page).to have_content(@experiment_1.objective)
       expect(page).to have_content(@experiment_3.name)
       expect(page).to have_content(@experiment_3.objective)
-      
+
       expect(page).to_not have_content(@experiment_2.name)
+      save_and_open_page
     end
   end
 end

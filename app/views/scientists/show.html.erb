@@ -1,0 +1,20 @@
+<h1>Scientist Overview - <%= @scientist.name %></h1>
+
+<h3>Details:</h3>
+<ul>
+  <li>Name: <%= @scientist.name %></li>
+  <li>Specialty: <%= @scientist.specialty %></li>
+  <li>University: <%= @scientist.university %></li>
+</ul>
+
+<h3>Working Lab:</h3>
+<p><%= @scientist.lab.name %></p>
+
+<h3>Current Experiments:</h3>
+<% @scientist.experiments.each do |experiment| %>
+  <p><%= experiment.name %>:</p>
+  <ul>
+    <li>Objective: <%= experiment.objective %></li>
+    <li>Duration: <%= experiment.num_months %></li>
+  </ul>
+<% end %>
