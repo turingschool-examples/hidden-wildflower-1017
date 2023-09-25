@@ -23,7 +23,7 @@ RSpec.describe "Scientist Show Page" do
       
     end
 
-    it "I see all of that scientist's information" do
+    it "I see a button to remove " do
       visit scientist_path(@scientist_1)
 
       expect(page).to have_content(@scientist_1.name)

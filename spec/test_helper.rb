@@ -8,6 +8,7 @@ def load_test_data
 
     @experiment_1 = @scientist_1.experiments.create!(name: "MINERvA", objective: "study neutrino reactions with five different nuclei", num_months: 4)
     @experiment_2 = @scientist_1.experiments.create!(name: "The Perfect Coffee", objective: "To create the perfect cup of coffee", num_months: 16)
+    @experiment_3 = @scientist_2.experiments.create!(name: "Science", objective: "Test Data", num_months: 20)
 
     ScientistExperiment.create(scientist: @scientist_2, experiment: @experiment_1)
 end

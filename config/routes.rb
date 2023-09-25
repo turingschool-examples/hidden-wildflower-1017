@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :experiments, only: :destroy, controller: :scientist_experiments
   end
   
-  resources :labs, only: :index
+  resources :experiments, only: :index
 
 end

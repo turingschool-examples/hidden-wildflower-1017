@@ -1,0 +1,6 @@
+<h1>Experiments</h1>
+<p>Experiments: <% @experiments.list_experiments.each do |experiment| %></p>
+<div id = <%= experiment.id %>>
+    <p><%= experiment.name %></p>
+    </div>
+<% end %>
