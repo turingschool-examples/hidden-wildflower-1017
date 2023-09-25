@@ -1,0 +1,11 @@
+<h1>Long Running Experiments</h1>
+<br>
+<dl>
+<% @experiments.long_running.each do |experiment| %>
+  <section id="experiment-<%= experiment.id %>">
+    <dt><strong><%= experiment.name %></strong></dt>
+      <dd>Objective: <%= experiment.objective %></dd>
+      <dd>Months Ongoing: <%= experiment.num_months %></dd>
+  </section><br>
+<% end %>
+</dl>
