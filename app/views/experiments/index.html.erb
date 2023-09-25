@@ -1,0 +1,5 @@
+<h2>Index of Long Running Experiments</h2>
+
+<% @experiments.each do |experiment| %>
+  <li><%= experiment.name %> - <%= experiment.num_months %> months</li>
+<% end %>

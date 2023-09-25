@@ -5,5 +5,11 @@
 <h3>Active Experiments:</h3>
 
 <% @scientist.experiments.each do |experiment| %>
-  <li><%= experiment.name %></li>
+  <div id="exp-<%= experiment.id %>">
+  <p><%= experiment.name %>
+    <%= button_to "Remove", "/scientists/#{@scientist.id}/experiments/#{experiment.id}", method: :delete, data: {turbo: false}  %>
+  </p>
+  </div>
 <% end %>
+
+
