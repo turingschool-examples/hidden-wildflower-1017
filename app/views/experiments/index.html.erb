@@ -2,7 +2,7 @@
 <div id="long_experiments">
   <h4>Long Experiments:</h4>
   <ul>
-    <% @experiments.where("num_months > 6").order(num_months: :desc).each do |experiment| %>
+    <% @experiments.long_experiments.each do |experiment| %>
       <div id="experiment-<%= experiment.id %>">
         <li>
           <p><%= experiment.name %></p>
