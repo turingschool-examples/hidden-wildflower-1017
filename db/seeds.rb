@@ -14,14 +14,24 @@
   university: "University of Paris"
 )
 
-@experiment_1 = @scientist_1.experiments.create(
+@scientist_2 = @lab_1.scientists.create(
+  name: "Sammy Scientist",
+  specialty: "physics",
+  university: "University of Colorado"
+)
+
+@experiment_1 = Experiment.create(
   name: "MINERvA",
   objective: "study neutrino reactions with five different nuclei",
   num_months: 4
 )
 
-@experiment_2 = @scientist_1.experiments.create(
+@experiment_2 = Experiment.create(
   name: "Cell Structure under Intense Heat",
   objective: "study the changes in cell structure in extreme heat",
   num_months: 2
 )
+
+ScientistExperiment.create(scientist: @scientist_1, experiment: @experiment_1)
+ScientistExperiment.create(scientist: @scientist_1, experiment: @experiment_2)
+ScientistExperiment.create(scientist: @scientist_2, experiment: @experiment_1)
