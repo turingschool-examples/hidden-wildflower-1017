@@ -42,3 +42,4 @@ RSpec.describe "Lab Show page" do
     expect(@payne.name).to appear_before(@sergei.name)
     expect(@sergei.name).to appear_before(@russell.name)
   end
+end

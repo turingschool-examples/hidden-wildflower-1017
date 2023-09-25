@@ -1,0 +1,7 @@
+<h1> <%= @lab.name %></h1>
+
+<% @lab.with_count.each do |scientist| %>
+  <section id="scientist-<%= scientist.id %>">
+  <%= "#{scientist.name} has #{scientist.count} experiments" %>
+  </section>
+<% end %>
