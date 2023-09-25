@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :scientists, only: [:show]
+  
+  delete "/scientists/:scientist_id/experiments/:experiment_id", to: "scientist_experiments#destroy"
 end
