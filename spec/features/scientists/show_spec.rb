@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "scientist#show" do
-  before :each do
+  before(:each) do
     @lab_1 = Lab.create!(name: "Dexter's Lab")
 
     @scientist_1 = @lab_1.scientists.create!(name: "Marie Curie", specialty: "radioactivity", university: "University of Paris")
@@ -35,6 +35,18 @@ RSpec.describe "scientist#show" do
       expect(page).to have_content(@experiment_2.name)
 
     end
-  end
+     
+    it "shows a button to remove that experiment from that scientist's work load" do 
+      visit "/scientists/#{@scientist_1.id}"
 
+      within("#remove_experiment-#{@experiment_1.id}") do
+        expect(page).to have_button("Remove Experiment")
+        click_button("Remove Experiment")
+      end
+      
+      expect(current_path).to eq("/scientists/#{@scientist_1.id}")
+
+      expect(page).to_not have_content(@experiment_1.name)
+    end
+  end 
 end

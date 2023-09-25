@@ -1,16 +1,17 @@
 <h1><%= @scientists.name %></h1>
+    <h3>Name:<%= @scientists.name %></h3>
+    <h3>Specialty:<%= @scientists.specialty %></h3>
+    <h3>University:<%= @scientists.university %></h3>
+    
+    
+    <h3>Lab where they work: <%= @scientists.lab.name %></h3>
+    <h3>Experiments currently working on:</h3>
   <ul>
-    <li>Name:<%= @scientists.name %></li>
-    <li>Specialty:<%= @scientists.specialty %></li>
-    <li>University:<%= @scientists.university %></li>
-    
-    
-    <li>Lab where they work: <%= @scientists.lab.name %></li>
-    <li>Experiments currently working on:
       <% @scientists.experiments.each do |experiment| %>
-        <p><%= experiment.name %></p>
+       <li id="remove_experiment-<%= experiment.id%>">
+          <%= experiment.name %>
+          <%= button_to "Remove Experiment", "/scientists/#{@scientists.id}", method: :patch %>
       <% end %>
-
-
+      </li>
   </ul>
 
