@@ -22,7 +22,7 @@ RSpec.describe "Scientists Show page", type: :feature do
       expect(page).to have_content(@beaker.specialty)
       expect(page).to have_content(@beaker.university)
       expect(page).to have_content(@muppet_labs.name)
-      expect(page).to have_content()
+      expect(page).to have_content(@exp1.name)
      end
     end
   end
