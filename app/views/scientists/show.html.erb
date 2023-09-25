@@ -1,0 +1,9 @@
+<h1><%= @scientist.name %></h1>
+<h2><%= @scientist.specialty %></h2>
+<h3><%= @scientist.university %></h3>
+<h3><%= @scientist.lab.name %></h3>
+
+<p id='experiments_names'> Experiments: </p>
+<% @scientist.experiments.each do |experiment| %>
+  <li><%= "#{experiment.name}" %></p>
+<% end %>
