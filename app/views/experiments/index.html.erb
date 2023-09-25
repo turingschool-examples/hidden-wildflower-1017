@@ -1,0 +1,9 @@
+<h1>Experiments Index</h1>
+
+<section id="experiments">
+  <ul>
+    <% @experiments.each do |experiment| %>
+      <li><%= experiment.name %></li>
+    <% end %>
+  </ul>
+</section>
